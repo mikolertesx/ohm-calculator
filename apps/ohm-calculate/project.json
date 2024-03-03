@@ -1,0 +1,8 @@
+{
+  "name": "ohm-calculate",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ohm-calculate/src",
+  "projectType": "application",
+  "targets": {},
+  "tags": []
+}
