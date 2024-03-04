@@ -2,7 +2,6 @@ import React from 'react';
 import { ColorModel, ToleranceModel } from '@ohm-calculate/api-interface';
 
 import Band from '../Band/band';
-import { ColorCollection } from '../../views/main-view';
 
 import styles from './resistance.module.scss';
 
@@ -11,7 +10,8 @@ type ResistanceProps = {
   resistanceB?: ColorModel;
   resistanceC?: ColorModel;
   tolerance?: ToleranceModel;
-  onChange: (newColors: ColorCollection) => void;
+  // onChange: (newColors: ColorCollection) => void;
+  onClick: (position: number) => void;
 };
 
 const Resistance = ({
@@ -19,26 +19,27 @@ const Resistance = ({
   resistanceB,
   resistanceC,
   tolerance,
-  onChange,
+  onClick,
 }: ResistanceProps) => {
-
-
   return (
     <div className={styles['resistance']}>
       <Band
         color={resistanceA?.color}
         label={resistanceA?.name}
         textColor={resistanceA?.textColor}
+        onClick={() => onClick(0)}
       />
       <Band
         color={resistanceB?.color}
         label={resistanceB?.name}
         textColor={resistanceB?.textColor}
+        onClick={() => onClick(1)}
       />
       <Band
         color={resistanceC?.color}
         label={resistanceC?.name}
         textColor={resistanceC?.textColor}
+        onClick={() => onClick(2)}
       />
       <Band
         color={tolerance?.color}
