@@ -1,12 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import MainView from '../views/main-view';
+// import styles from './app.module.scss';
 
-import NxWelcome from './nx-welcome';
+// import NxWelcome from './nx-welcome';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="ohm-calculate" />
+      <MainView />
     </div>
   );
 }
