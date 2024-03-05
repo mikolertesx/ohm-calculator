@@ -10,8 +10,9 @@ type ResistanceProps = {
   resistanceB?: ColorModel;
   resistanceC?: ColorModel;
   tolerance?: ToleranceModel;
-  // onChange: (newColors: ColorCollection) => void;
-  onClick: (position: number) => void;
+
+  onClickResistance: (position: number) => void;
+  onClickTolerance: () => void;
 };
 
 const Resistance = ({
@@ -19,32 +20,31 @@ const Resistance = ({
   resistanceB,
   resistanceC,
   tolerance,
-  onClick,
+  onClickResistance,
+  onClickTolerance,
 }: ResistanceProps) => {
+  const resistances: [ColorModel?, ColorModel?, ColorModel?] = [
+    resistanceA,
+    resistanceB,
+    resistanceC,
+  ];
+
   return (
     <div className={styles['resistance']}>
-      <Band
-        color={resistanceA?.color}
-        label={resistanceA?.name}
-        textColor={resistanceA?.textColor}
-        onClick={() => onClick(0)}
-      />
-      <Band
-        color={resistanceB?.color}
-        label={resistanceB?.name}
-        textColor={resistanceB?.textColor}
-        onClick={() => onClick(1)}
-      />
-      <Band
-        color={resistanceC?.color}
-        label={resistanceC?.name}
-        textColor={resistanceC?.textColor}
-        onClick={() => onClick(2)}
-      />
+      {resistances.map((resistance, index) => (
+        <Band
+          color={resistance?.color}
+          label={resistance?.name}
+          textColor={resistance?.textColor}
+          onClick={() => onClickResistance(index)}
+        />
+      ))}
+
       <Band
         color={tolerance?.color}
         label={tolerance?.name}
         textColor={tolerance?.textColor}
+        onClick={onClickTolerance}
       />
     </div>
   );

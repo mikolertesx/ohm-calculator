@@ -1,7 +1,4 @@
-import MainView from '../views/main-view';
-// import styles from './app.module.scss';
-
-// import NxWelcome from './nx-welcome';
+import MainView from '../views/MainView/main-view';
 
 export function App() {
   return (

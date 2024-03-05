@@ -9,24 +9,23 @@ import {
 
 import StarIcon from '@mui/icons-material/Star';
 
-import { ColorModel } from '@ohm-calculate/api-interface';
+import { ToleranceModel } from '@ohm-calculate/api-interface';
 import ColorBox from '../../ColorBox/ColorBox';
 
-type ResistancePickerModalProps = {
-  colors: ColorModel[];
-  onPick: (color?: ColorModel) => void;
+type TolerancePickerModalProps = {
+  tolerances: ToleranceModel[];
+  onPick: (tolerance?: ToleranceModel) => void;
   currentlySelected?: string;
   show: boolean;
 };
 
 // TODO Add styles to the resistance picker.
-// TODO Add virtualization to the list (Fixed Size List)
-const ResistancePickerModal = ({
-  colors,
+const TolerancePickerModal = ({
+  tolerances,
   show,
   onPick,
   currentlySelected,
-}: ResistancePickerModalProps) => {
+}: TolerancePickerModalProps) => {
   return (
     <Dialog open={show} onClose={() => onPick()}>
       <List
@@ -37,23 +36,23 @@ const ResistancePickerModal = ({
           bgcolor: 'background.paper',
         }}
       >
-        {colors.map((color) => (
+        {tolerances.map((tolerance) => (
           <ListItem
-            key={color.name}
-            onClick={() => onPick(color)}
+            key={tolerance.name}
+            onClick={() => onPick(tolerance)}
             sx={{
               cursor: 'pointer',
             }}
-            secondaryAction={<ColorBox color={color.color} />}
+            secondaryAction={<ColorBox color={tolerance.color} />}
           >
             <ListItemButton>
               <ListItemIcon>
-                {currentlySelected === color.name && <StarIcon />}
+                {currentlySelected === tolerance.name && <StarIcon />}
               </ListItemIcon>
 
               <ListItemText
-                primary={`Name: ${color.name}`}
-                secondary={`Value: ${color.number}`}
+                primary={`Name: ${tolerance.name}`}
+                secondary={`± ${tolerance.variation}%`}
               />
             </ListItemButton>
           </ListItem>
@@ -63,4 +62,4 @@ const ResistancePickerModal = ({
   );
 };
 
-export default ResistancePickerModal;
+export default TolerancePickerModal;

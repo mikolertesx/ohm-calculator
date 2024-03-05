@@ -30,6 +30,8 @@ interface IOhmValueCalculator {
   ): number;
 }
 
+// TODO Move OhmValueCalculator to a different place.
+// TODO Implmement CalculateOhmValue.
 export class OhmValueCalculator implements IOhmValueCalculator {
   CalculateOhmValue(
     bandAColor: Colors,
