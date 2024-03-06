@@ -33,6 +33,7 @@ const Resistance = ({
     <div className={styles['resistance']}>
       {resistances.map((resistance, index) => (
         <Band
+          key={`${resistance?.name}-${index}`}
           color={resistance?.color}
           label={resistance?.name}
           textColor={resistance?.textColor}

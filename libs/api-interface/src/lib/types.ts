@@ -12,7 +12,21 @@ export type Colors =
 
 export type Tolerance = 'gold' | 'silver' | 'none';
 
-interface IOhmValueCalculator {
+export type ColorModel = {
+  name: string;
+  number: number;
+  color: string;
+  textColor: string;
+};
+
+export type ToleranceModel = {
+  name: string;
+  variation: number;
+  color: string;
+  textColor: string;
+};
+
+export interface IOhmValueCalculator {
   /**
    * @function CalculateOhmValue
    * @param bandAColor The color of the first figure of component value band.
@@ -22,23 +36,9 @@ interface IOhmValueCalculator {
    **/
 
   CalculateOhmValue(
-    /* Band A Color. */
-    bandAColor: Colors,
-    bandBColor: Colors,
-    bandCColor: Colors,
-    bandDColor: Tolerance
-  ): number;
-}
-
-// TODO Move OhmValueCalculator to a different place.
-// TODO Implmement CalculateOhmValue.
-export class OhmValueCalculator implements IOhmValueCalculator {
-  CalculateOhmValue(
-    bandAColor: Colors,
-    bandBColor: Colors,
-    bandCColor: Colors,
-    bandDColor: Tolerance
-  ): number {
-    throw Error('Not implemented error.');
-  }
+    bandAColor: string,
+    bandBColor: string,
+    bandCColor: string,
+    bandDColor: string
+  ): [number, number, number];
 }

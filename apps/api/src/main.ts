@@ -2,19 +2,24 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
-import express, { Response } from 'express';
+import * as path from 'path';
+
+import express, { Response, Request, json } from 'express';
 
 import {
   GetResistanceColorsResponse,
   GetToleranceColorsResponse,
+  PostCalculateRequest,
+  PostCalculateResponse,
 } from '@ohm-calculate/api-interface';
 
-import * as path from 'path';
-import resistances from './src/resistances';
-import tolerances from './src/tolerances';
+import resistances from './data/resistances';
+import tolerances from './data/tolerances';
+import OhmValueCalculator from './logic/OhmValueCalculator';
 
 const app = express();
 
+app.use(json());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/api', (req, res) => {
@@ -41,8 +46,32 @@ app.get(
   }
 );
 
+// TODO Send api calls to a different folder.
+app.post(
+  '/api/calculate',
+  (
+    req: Request<object, object, PostCalculateRequest>,
+    res: Response<PostCalculateResponse>
+  ) => {
+    const { bandAColor, bandBColor, bandCColor, bandDColor } = req.body;
+    const calculator = new OhmValueCalculator();
+
+    const result = calculator.CalculateOhmValue(
+      bandAColor,
+      bandBColor,
+      bandCColor,
+      bandDColor
+    );
+
+    return res.send({
+      result,
+    });
+  }
+);
+
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
+
 server.on('error', console.error);

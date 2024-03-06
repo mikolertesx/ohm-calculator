@@ -1,16 +1,4 @@
-export type ColorModel = {
-  name: string;
-  number: number;
-  color: string;
-  textColor: string;
-};
-
-export type ToleranceModel = {
-  name: string;
-  variation: number;
-  color: string;
-  textColor: string;
-};
+import { ColorModel, ToleranceModel } from './types';
 
 export type GetResistanceColorsResponse = {
   data: ColorModel[];
@@ -18,4 +6,8 @@ export type GetResistanceColorsResponse = {
 
 export type GetToleranceColorsResponse = {
   data: ToleranceModel[];
+};
+
+export type PostCalculateResponse = {
+  result: [number, number, number];
 };

@@ -1,5 +1,7 @@
 // TODO Load this from a database instead.
 
+import { ColorModel, Colors } from '@ohm-calculate/api-interface';
+
 const colors = [
   {
     name: 'black',
@@ -62,5 +64,12 @@ const colors = [
     textColor: '#000000',
   },
 ];
+
+type ColorDictionary = Record<Colors, ColorModel>;
+
+export const colorDictionary: ColorDictionary = colors.reduce(
+  (prev, cur) => ({ ...prev, [cur.name]: cur }),
+  {} as ColorDictionary
+);
 
 export default colors;

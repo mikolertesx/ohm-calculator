@@ -1,5 +1,7 @@
 // TODO Load this from a database instead.
 
+import { Tolerance, ToleranceModel } from "@ohm-calculate/api-interface";
+
 const tolerances = [
   {
     name: 'gold',
@@ -20,5 +22,12 @@ const tolerances = [
     textColor: '#000000',
   },
 ];
+
+type ToleranceDictionary = Record<Tolerance, ToleranceModel>;
+
+export const ToleranceDictionary: ToleranceDictionary = tolerances.reduce(
+  (prev, cur) => ({ ...prev, [cur.name]: cur }),
+  {} as ToleranceDictionary
+);
 
 export default tolerances;

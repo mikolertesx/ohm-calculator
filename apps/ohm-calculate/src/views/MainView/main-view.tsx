@@ -4,6 +4,7 @@ import { ColorModel, ToleranceModel } from '@ohm-calculate/api-interface';
 import ResistancePickerModal from '../../components/Modals/ResistancePickerModal/resistance-picker-modal';
 import TolerancePickerModal from '../../components/Modals/TolerancePickerModal/tolerance-picker-modal';
 import useData from './useData';
+import useResistance from './useResistance';
 
 export type ColorCollection = [
   ColorModel,
@@ -14,7 +15,7 @@ export type ColorCollection = [
 
 const MainView = () => {
   const [colorCollection, setColorCollection] =
-    useState<ColorCollection | null>(null);
+    useState<ColorCollection | null>();
 
   const [selectedResistance, setSelectedResistance] = useState<number | null>(
     null
@@ -23,6 +24,15 @@ const MainView = () => {
   const { colors, tolerances } = useData();
   const [showColorModal, setShowColorModal] = useState(false);
   const [showToleranceModal, setShowToleranceModal] = useState(false);
+
+  const resistanceValue = useResistance({
+    resistanceA: colorCollection?.[0]?.name,
+    resistanceB: colorCollection?.[1]?.name,
+    resistanceC: colorCollection?.[2]?.name,
+    tolerance: colorCollection?.[3]?.name,
+  });
+
+  console.log(resistanceValue);
 
   // Pick default values.
   useEffect(() => {
