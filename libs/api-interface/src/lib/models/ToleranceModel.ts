@@ -3,17 +3,17 @@ import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 @Entity()
 export class ToleranceModel {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
   @Column()
-  name!: string;
+  name: string;
 
   @Column()
-  tolerance!: number;
+  tolerance: number;
 
   @Column()
-  backgroundColor!: string;
+  backgroundColor: string;
 
   @Column()
-  textColor!: string;
+  textColor: string;
 }

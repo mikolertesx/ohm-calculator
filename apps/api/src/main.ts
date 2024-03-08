@@ -2,6 +2,10 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
+import 'reflect-metadata';
+
+import './initializeDB';
+
 import * as path from 'path';
 
 import express, { Response, Request, json } from 'express';
@@ -62,6 +66,14 @@ app.post(
       bandCColor,
       bandDColor
     );
+
+    console.log({
+      bandAColor,
+      bandBColor,
+      bandCColor,
+      bandDColor,
+      result,
+    });
 
     return res.send({
       result,

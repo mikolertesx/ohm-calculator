@@ -17,9 +17,14 @@ const useResistance = ({
   resistanceC,
   tolerance,
 }: useResistanceProps) => {
-  const [value, setValue] = useState([NaN, NaN]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [value, setValue] = useState([NaN, NaN, NaN]);
 
   useEffect(() => {
+    if (!resistanceA || !resistanceB || !resistanceC || !tolerance) {
+      return;
+    }
+
     const getResistanceValue = async () => {
       const requestBody: PostCalculateRequest = {
         bandAColor: resistanceA!,
@@ -27,6 +32,8 @@ const useResistance = ({
         bandCColor: resistanceC!,
         bandDColor: tolerance!,
       };
+
+      setIsLoading(true);
 
       const response = await fetch('/api/calculate', {
         method: 'POST',
@@ -40,13 +47,14 @@ const useResistance = ({
 
       const { result } = json;
 
+      setIsLoading(false);
       setValue(result);
     };
 
     getResistanceValue();
   }, [resistanceA, resistanceB, resistanceC, tolerance]);
 
-  return value;
+  return { value, isLoading };
 };
 
 export default useResistance;

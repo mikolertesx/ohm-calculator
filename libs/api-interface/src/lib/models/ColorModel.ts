@@ -3,17 +3,17 @@ import {  Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 @Entity()
 export class ColorModel {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
   @Column()
-  modifier!: number;
+  modifier: number;
 
   @Column()
-  name!: string;
+  name: string;
 
   @Column()
-  backgroundColor!: string;
+  backgroundColor: string;
 
   @Column()
-  textColor!: string;
+  textColor: string;
 }

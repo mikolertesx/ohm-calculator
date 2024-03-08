@@ -32,8 +32,6 @@ const MainView = () => {
     tolerance: colorCollection?.[3]?.name,
   });
 
-  console.log(resistanceValue);
-
   // Pick default values.
   useEffect(() => {
     if (!colors || !tolerances) return;
@@ -105,6 +103,13 @@ const MainView = () => {
           setShowToleranceModal(true);
         }}
       />
+      {resistanceValue.isLoading === false && (
+        <>
+          <p>Resistance of {resistanceValue.value[1]} +-</p>
+          <p> - {resistanceValue.value[0]}</p>
+          <p> + {resistanceValue.value[2]}</p>
+        </>
+      )}
     </>
   );
 };
