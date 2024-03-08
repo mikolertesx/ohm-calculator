@@ -10,7 +10,7 @@ import { ToleranceDictionary } from '../data/tolerances';
 class OhmValueCalculator implements IOhmValueCalculator {
   getToleranceFromColor(tolerance: string) {
     if (tolerance in ToleranceDictionary) {
-      return ToleranceDictionary[tolerance as Tolerance].variation;
+      return ToleranceDictionary[tolerance as Tolerance].tolerance;
     }
 
     return NaN;
@@ -18,7 +18,7 @@ class OhmValueCalculator implements IOhmValueCalculator {
 
   getResistanceFromColor(color: string) {
     if (color in colorDictionary) {
-      return colorDictionary[color as Colors].number;
+      return colorDictionary[color as Colors].modifier;
     }
 
     return NaN;
@@ -48,7 +48,6 @@ class OhmValueCalculator implements IOhmValueCalculator {
     );
 
     const percentage = tolerance / 100;
-    console.log({ lowerValue: 1 + percentage, upperValue: 1 - percentage });
     const maxValue = totalValue * (1 + percentage);
     const minValue = totalValue * (1 - percentage);
 

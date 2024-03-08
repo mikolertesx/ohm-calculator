@@ -12,20 +12,6 @@ export type Colors =
 
 export type Tolerance = 'gold' | 'silver' | 'none';
 
-export type ColorModel = {
-  name: string;
-  number: number;
-  color: string;
-  textColor: string;
-};
-
-export type ToleranceModel = {
-  name: string;
-  variation: number;
-  color: string;
-  textColor: string;
-};
-
 export interface IOhmValueCalculator {
   /**
    * @function CalculateOhmValue

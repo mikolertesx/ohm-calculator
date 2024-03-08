@@ -44,7 +44,7 @@ const ResistancePickerModal = ({
             sx={{
               cursor: 'pointer',
             }}
-            secondaryAction={<ColorBox color={color.color} />}
+            secondaryAction={<ColorBox color={color.backgroundColor} />}
           >
             <ListItemButton>
               <ListItemIcon>
@@ -53,7 +53,7 @@ const ResistancePickerModal = ({
 
               <ListItemText
                 primary={`Name: ${color.name}`}
-                secondary={`Value: ${color.number}`}
+                secondary={`Value: ${color.modifier}`}
               />
             </ListItemButton>
           </ListItem>

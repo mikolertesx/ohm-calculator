@@ -34,7 +34,7 @@ const Resistance = ({
       {resistances.map((resistance, index) => (
         <Band
           key={`${resistance?.name}-${index}`}
-          color={resistance?.color}
+          color={resistance?.backgroundColor}
           label={resistance?.name}
           textColor={resistance?.textColor}
           onClick={() => onClickResistance(index)}
@@ -42,7 +42,7 @@ const Resistance = ({
       ))}
 
       <Band
-        color={tolerance?.color}
+        color={tolerance?.backgroundColor}
         label={tolerance?.name}
         textColor={tolerance?.textColor}
         onClick={onClickTolerance}

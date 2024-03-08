@@ -1,24 +1,27 @@
 // TODO Load this from a database instead.
 
-import { Tolerance, ToleranceModel } from "@ohm-calculate/api-interface";
+import { Tolerance, ToleranceModel } from '@ohm-calculate/api-interface';
 
-const tolerances = [
+const tolerances: ToleranceModel[] = [
   {
+    id: 0,
     name: 'gold',
-    variation: 5,
-    color: '#c0891f',
+    tolerance: 5,
+    backgroundColor: '#c0891f',
     textColor: '#FFFFFF',
   },
   {
+    id: 1,
     name: 'silver',
-    variation: 10,
-    color: '#818382',
+    tolerance: 10,
+    backgroundColor: '#818382',
     textColor: '#FFFFFF',
   },
   {
+    id: 2,
     name: 'no color',
-    variation: 20,
-    color: '#FFFFFF',
+    tolerance: 20,
+    backgroundColor: '#FFFFFF',
     textColor: '#000000',
   },
 ];

@@ -46,19 +46,6 @@ const useResistance = ({
     getResistanceValue();
   }, [resistanceA, resistanceB, resistanceC, tolerance]);
 
-  // const resistance = useMemo(() => {
-  //   if (!resistanceA || !resistanceB || !resistanceC || !tolerance) {
-  //     return NaN;
-  //   }
-
-  //   return resistanceCalculator.CalculateOhmValue(
-  //     resistanceA,
-  //     resistanceB,
-  //     resistanceC,
-  //     tolerance
-  //   );
-  // }, [resistanceA, resistanceB, resistanceC, tolerance]);
-
   return value;
 };
 

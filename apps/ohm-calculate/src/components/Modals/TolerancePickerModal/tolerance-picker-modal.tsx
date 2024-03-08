@@ -43,7 +43,7 @@ const TolerancePickerModal = ({
             sx={{
               cursor: 'pointer',
             }}
-            secondaryAction={<ColorBox color={tolerance.color} />}
+            secondaryAction={<ColorBox color={tolerance.backgroundColor} />}
           >
             <ListItemButton>
               <ListItemIcon>
@@ -52,7 +52,7 @@ const TolerancePickerModal = ({
 
               <ListItemText
                 primary={`Name: ${tolerance.name}`}
-                secondary={`± ${tolerance.variation}%`}
+                secondary={`± ${tolerance.tolerance}%`}
               />
             </ListItemButton>
           </ListItem>

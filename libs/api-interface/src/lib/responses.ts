@@ -1,4 +1,4 @@
-import { ColorModel, ToleranceModel } from './types';
+import { ColorModel, ToleranceModel } from './models';
 
 export type GetResistanceColorsResponse = {
   data: ColorModel[];
